@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+ln -S ~/dashfiles/.bashrc.local ~/.bashrc.local
+ln -S ~/dashfiles/.zshrc.local ~/.zshrc.local
+ln -S ~/dashfiles/.vimrc.local ~/.vimrc.local
+ln -S ~/dashfiles/.vimbundles.local ~/.vimbundles.local
+ln -S ~/dashfiles/.tmux.conf.local ~/.tmux.conf.local
