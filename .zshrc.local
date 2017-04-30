@@ -1,0 +1,10 @@
+
+PROMPT='%{$fg_bold[green]%}%n@%{$reset_color%}:%{$fg_bold[cyan]%}%~%{$reset_color%}$(git_prompt_info "(%s)")%# '
+
+eval "$(/Users/chriserin/hr/bin/hr init -)"
+
+#GO configuration
+export GOPATH=~/go
+export PATH=$PATH:~/go/bin
+
+alias pf='ps -A | grep'

@@ -1,0 +1,49 @@
+set hlsearch
+highlight Search guibg='Purple' guifg='NONE'
+
+set nu
+
+au BufNewFile,BufRead *.gradle setf groovy
+
+fu! AlignCucumber()
+  %s/When\s*/When  /
+  %s/Then\s*/Then  /
+  %s/And\s*/And   /
+  %s/Given\s*/Given /
+  redraw!
+endf
+
+noremap =c :call AlignCucumber()<CR>
+
+function! Submit()
+  silent !exercism submit %
+  silent !git add .
+  silent !git commit -m "Submitting %:h"
+  !git push
+endfunction
+
+function! Fetch()
+  let new_files = system("exercism fetch go")
+  let ruby_command = "ruby -e \"puts '" . new_files . "'.match(/(\\/.*)$/)[1]\""
+  let dir_name = system(ruby_command)
+  exec "cd " . dir_name
+  let files = globpath('.', '*.go')
+  let file_name = split(files, '\n')[0]
+  exec "edit " . file_name
+endfunction
+
+command! Fetch call Fetch()
+command! Submit call Submit()
+nmap <Leader>e :!go test<CR>
+
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+color gruvbox
+hi Normal guibg=black
+
+command! W w
+" autocmd BufRead *.til :color shine
+autocmd BufRead *.til :Goyo!
+au BufRead *.til :Goyo
+
