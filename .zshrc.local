@@ -13,6 +13,12 @@ alias la='ls -a'
 alias ll='ls -l'
 alias lsd='ls -ld *(-/DN)'
 
+function dasherize() {
+  [ $(pwd) != $HOME ] && echo "only works in $HOME" && return 127
+  mv $1 dashfiles && ln -s dashfiles/$1 $1
+  ls -l dashfiles/$1
+}
+
 zrcp="$HOME/.zshrc.postgres"
 [[ ! -a $zrcp ]] || source $zrcp
 
