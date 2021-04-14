@@ -1,10 +1,23 @@
-
 PROMPT='%{$fg_bold[green]%}%n@%{$reset_color%}:%{$fg_bold[cyan]%}%~%{$reset_color%}$(git_prompt_info "(%s)")%# '
 
-eval "$(/Users/chriserin/hr/bin/hr init -)"
-
-#GO configuration
-export GOPATH=~/go
-export PATH=$PATH:~/go/bin
-
 alias pf='ps -A | grep'
+
+fpath=($HOME/.asdf/completions $fpath)
+autoload -Uz compinit && compinit
+
+. $HOME/.asdf/asdf.sh
+
+alias ls="ls --color --group-directories-first"
+alias l='ls -F -G -lah'
+alias la='ls -a'
+alias ll='ls -l'
+alias lsd='ls -ld *(-/DN)'
+
+zrcp="$HOME/.zshrc.postgres"
+[[ ! -a $zrcp ]] || source $zrcp
+
+zrcn="$HOME/.zshrc.npm"
+[[ ! -a $zrcn ]] || source $zrcn
+
+zrct="$HOME/.zshrc.tmux"
+[[ ! -a $zrct ]] || source $zrct

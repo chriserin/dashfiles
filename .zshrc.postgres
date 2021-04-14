@@ -1,0 +1,40 @@
+pg_pass=docker
+container_name=pg-docker
+
+function pg_stop() {
+  docker ps -q --filter "name=$container_name" | grep -q . && docker stop $container_name
+
+  RESULT=$?
+
+  if [ $RESULT -eq 0 ]; then
+    echo "Postgres container $container_name is stopped"
+  else
+    echo "Postgres container $container_name failed to stop"
+  fi
+}
+
+function pg_start() {
+  tag=$1
+  : ${tag:=latest}
+  pg_stop
+  echo "starting postgreql $tag"
+  docker pull postgres:$tag
+  data_dir=$HOME/data/volumes/postgres-$tag
+  echo "data dir is: $data_dir"
+  mkdir -p $data_dir
+  docker run --rm --name $container_name -e POSTGRES_PASSWORD=$pg_pass -d -p 5432:5432 -v $data_dir:/var/lib/postgresql/data postgres:$tag
+
+  RESULT=$?
+
+  if [ $RESULT -eq 0 ]; then
+    echo "Postgres image $tag is running"
+  else
+    echo "Postgres image $tag failed to run"
+  fi
+}
+
+function pg() {
+  db=$1
+  : ${db:=postgres}
+  psql postgresql://postgres:$pg_pass@localhost:5432/$db
+}
