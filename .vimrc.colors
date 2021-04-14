@@ -62,12 +62,13 @@ let s:colorsfiletypes = {
       \ 'exdoc': 'ayu',
       \ 'javascript': 'palenight',
       \ 'javascriptreact': 'palenight',
-      \ 'json': 'palenight'
+      \ 'json': 'palenight',
+      \ 'gitcommit': 'torte'
       \ }
 
 autocmd BufWinEnter * call SwitchColors()
 
-let s:lastcolor = 'torte'
+let s:lastcolor = 'gruvbox'
 
 function SwitchColors()
   if has_key(s:colorsfiletypes, &filetype)
