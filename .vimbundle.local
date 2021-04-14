@@ -1,14 +1,6 @@
-tpope/vim-fireplace
-tpope/vim-leiningen
-tpope/vim-salve
-guns/vim-clojure-static
-vim-scripts/SyntaxRange
-dkarter/bullets.vim
-dermusikman/sonicpi.vim
-slashmili/alchemist.vim
-carbonscott/vim-smartfold
-junegunn/goyo.vim
-fatih/vim-go
-morhetz/gruvbox
-junegunn/seoul256.vim
-flazz/vim-colorschemes
+Plug 'vim-scripts/SyntaxRange'
+Plug 'dkarter/bullets.vim'
+Plug 'morhetz/gruvbox'
+Plug 'junegunn/seoul256.vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'rafi/awesome-vim-colorschemes'
