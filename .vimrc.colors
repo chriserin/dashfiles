@@ -67,7 +67,7 @@ let s:colorsfiletypes = {
 
 autocmd BufWinEnter * call SwitchColors()
 
-let s:lastcolor = 'gruvbox'
+let s:lastcolor = 'torte'
 
 function SwitchColors()
   if has_key(s:colorsfiletypes, &filetype)
