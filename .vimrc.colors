@@ -78,19 +78,19 @@ function SwitchColors()
   call s:AccurateColorscheme(s:lastcolor)
 endfunction
 
-let s:colorsilike = ['OceanicNext', 'one', 'seoul256', 'palenight', 'ayu', 'pink-moon', 'jellybeans', 'gruvbox']
+let s:colorsilike = ['PaperColor', 'OceanicNext', 'one', 'seoul256', 'palenight', 'ayu', 'pink-moon', 'jellybeans', 'gruvbox']
 let s:colorsilike_index = 0
 
-function CycleColorsILike()
-  let s:colorsilike_index += 1
+function CycleColorsILike(incval)
+  let s:colorsilike_index += a:incval
   echo s:colorsilike[s:colorsilike_index % len(s:colorsilike)]
 
   let l:nextColor = s:colorsilike[s:colorsilike_index % len(s:colorsilike)]
   call s:AccurateColorscheme(l:nextColor)
 endfunction
 
-nnoremap ]c :call CycleColorsILike()<Enter>
-nnoremap ]c :call CycleColorsILike()<Enter>
+nnoremap <silent> ]c :call CycleColorsILike(1)<Enter>
+nnoremap <silent> [c :call CycleColorsILike(-1)<Enter>
 
 hi link vimLineComment Comment
 hi link jsReturn Keyword
